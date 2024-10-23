@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Order Form</title>
+</head>
+<body>
+    <div>
+        <h1>Submit an Order:</h1>
+        <form id="orderForm">
+            <label for="productName">Product Name:</label>
+            <input type="text" id="productName" name="productName">
+            <label for="quantity">Quantity:</label>
+            <input type="number" id="quantity" name="quantity">
+            <input type="button" value="Submit" onclick="submitOrder()">
+        </form>
+    </div>
+    <script>
+        // Replace the below API endpoint
+        const API_ENPOINT_URI = "<API ENPOINT URI>";
+
+        async function submitOrder() {
+            const productName = document.getElementById("productName").value;
+            const quantity = document.getElementById("quantity").value;
+            const response = await fetch(API_ENPOINT_URI, {
+                method: "POST",
+                body: JSON.stringify({ productName, quantity }),
+                headers: { "Content-Type": "application/json" }
+            });
+            if (response.ok) {
+                alert("Order submitted!");
+                document.getElementById("orderForm").reset();
+            }
+            else {
+                alert("Error occurred");
+            }
+        }
+    </script>
+</body>
+</html>
