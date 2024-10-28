@@ -1,6 +1,6 @@
-### A small AWS Lambda example for use as a template.
+### A simple AWS Lambda example.
 
-Implements a simple system for processing "orders".
+Implements a basic system for processing "orders".
 
 The `submit_order.py` Lambda function accepts 'order' data and creates a message which is placed on an SQS queue.
 - The function could be triggered by AWS API Gateway.
